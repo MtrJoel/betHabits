@@ -8,15 +8,14 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 class HomePage extends StatefulWidget {
   static const String routename = 'HomePage';
-  final String? userName;
-  const HomePage({super.key, this.userName});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  String? userEmail;
+  String? userEmail; // * Get email of user
   int initialMinutes = 25;
   int minutes = 25;
   int seconds = 0;
@@ -80,13 +79,19 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    print('${widget.userName}');
+    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
+      key: _scaffoldKey,
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(60.0),
           child: AppBar(
             automaticallyImplyLeading: false,
             centerTitle: true,
+            leading: IconButton(
+                onPressed: () {
+                  _scaffoldKey.currentState?.openDrawer();
+                },
+                icon: Icon(Icons.menu)),
             actions: [
               TextButton(onPressed: () {}, child: const Icon(Icons.settings)),
             ],
@@ -137,16 +142,14 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.all(19.5),
                     child: Row(
                       children: [
-                        Text('STUDY METHODS',
+                        Text(
+                          'STUDY METHODS',
                           style: GoogleFonts.poppins(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w700
-                          ),
+                              fontSize: 24, fontWeight: FontWeight.w700),
                         ),
                       ],
                     ),
                   ),
-                  
                   ListTile(
                     leading: Icon(Icons.timelapse_outlined),
                     title: Text('POMODORO'),
@@ -163,6 +166,28 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {},
                   ),
                   Divider(),
+                  ListTile(
+                    leading: Icon(Icons.mode_night_outlined),
+                    title: Text('Mode'),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.contact_mail_outlined),
+                    title: Text('Contact'),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.logout_outlined),
+                    title: Text('GO OUT'),
+                    onTap: () {},
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(30.5),
+                    child: Text(
+                      'Version: 1.0.0+1',
+                      style: GoogleFonts.robotoCondensed(color: Colors.black26),
+                    ),
+                  )
                 ],
               )
             ],

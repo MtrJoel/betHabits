@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 Future<void> main() async {
-  
   WidgetsFlutterBinding.ensureInitialized();
   await usersPreferences.init();
   await Firebase.initializeApp(
@@ -19,24 +18,17 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
   final prefs = usersPreferences();
 
-  
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    
-
     return ResponsiveSizer(
       builder: (BuildContext, Orientation, ScreenType) {
         return const MaterialApp(
-          
           title: 'Pages Principal',
           debugShowCheckedModeBanner: false,
           home: SplashScreen(),
-          
         );
       },
     );
   }
 }
-
