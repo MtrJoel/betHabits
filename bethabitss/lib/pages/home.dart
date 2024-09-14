@@ -1,7 +1,4 @@
 import 'dart:async';
-import 'package:bethabitss/pages/long_break.dart';
-import 'package:bethabitss/pages/short_break.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart' show GoogleFonts;
 import 'package:responsive_sizer/responsive_sizer.dart';
