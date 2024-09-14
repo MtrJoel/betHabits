@@ -56,7 +56,7 @@ class _LongBreakState extends State<LongBreak> {
 
   @override
   void dispose() {
-    timer?.cancel;
+    timer?.cancel();
     super.dispose();
   }
 
