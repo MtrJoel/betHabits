@@ -15,25 +15,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String? userEmail; // * Get email of user
   int initialMinutes = 25;
   int minutes = 25;
   int seconds = 0;
   bool isRunning = false;
   Timer? timer;
   Color textColor = Colors.black;
-  // ! function utils
-  void initState() {
-    super.initState();
-    getUserEmail();
-  }
-
-  void getUserEmail() {
-    User? user = FirebaseAuth.instance.currentUser;
-    setState(() {
-      userEmail = user?.email;
-    });
-  }
 
   // ! function timer
   void startTime() {
@@ -79,166 +66,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
-      key: _scaffoldKey,
-      appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(60.0),
-          child: AppBar(
-            automaticallyImplyLeading: false,
-            centerTitle: true,
-            leading: IconButton(
-                onPressed: () {
-                  _scaffoldKey.currentState?.openDrawer();
-                },
-                icon: Icon(Icons.menu)),
-            actions: [
-              TextButton(onPressed: () {}, child: const Icon(Icons.settings)),
-            ],
-            title: Text(
-              'Pomodoro',
-              style: GoogleFonts.merienda(
-                fontSize: 22.sp,
-              ),
-            ),
-            backgroundColor: const Color(0xffE7BB41),
-          )),
-      drawer: Drawer(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Material(
-                color: Colors.redAccent,
-                child: InkWell(
-                  onTap: () {},
-                  child: Container(
-                    padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).padding.top,
-                      bottom: 24,
-                    ),
-                    child: Column(
-                      children: [
-                        CircleAvatar(
-                          radius: 65.5,
-                          backgroundImage: NetworkImage(
-                              'https://easy-peasy.ai/cdn-cgi/image/quality=80,format=auto,width=700/https://fdczvxmwwjwpwbeeqcth.supabase.co/storage/v1/object/public/images/5f1cf06e-289e-4b00-9fea-ef97aa96f365/bd3e14c9-24c6-49ff-99d1-8e502c1a64fe.png'),
-                        ),
-                        SizedBox(
-                          height: 1.5.w,
-                        ),
-                        Text(
-                          '${userEmail}',
-                          style: GoogleFonts.roboto(fontSize: 18.2.sp),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(19.5),
-                    child: Row(
-                      children: [
-                        Text(
-                          'STUDY METHODS',
-                          style: GoogleFonts.poppins(
-                              fontSize: 24, fontWeight: FontWeight.w700),
-                        ),
-                      ],
-                    ),
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.timelapse_outlined),
-                    title: Text('POMODORO'),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.timelapse_sharp),
-                    title: Text('LONG BREAK'),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.timelapse_sharp),
-                    title: Text('SHORT BREAK'),
-                    onTap: () {},
-                  ),
-                  Divider(),
-                  ListTile(
-                    leading: Icon(Icons.mode_night_outlined),
-                    title: Text('Mode'),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.contact_mail_outlined),
-                    title: Text('Contact'),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.logout_outlined),
-                    title: Text('GO OUT'),
-                    onTap: () {},
-                  ),
-                  Container(
-                    margin: EdgeInsets.all(30.5),
-                    child: Text(
-                      'Version: 1.0.0+1',
-                      style: GoogleFonts.robotoCondensed(color: Colors.black26),
-                    ),
-                  )
-                ],
-              )
-            ],
-          ),
-        ),
-      ),
       backgroundColor: const Color(0xff121420),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextButton(
-                  onPressed: () {
-                    print('Click1');
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const HomePage()));
-                  },
-                  style: const ButtonStyle(),
-                  child: Text(
-                    'POMO',
-                    style: GoogleFonts.changa(color: Colors.white),
-                  ),
-                ),
-                TextButton(
-                    onPressed: () {
-                      print('Click');
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const ShortBreak()));
-                    },
-                    child: const Text('SHORT BREAK')),
-                TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const LongBreak()));
-                    },
-                    child: const Text('LONG BREAK')),
-              ],
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

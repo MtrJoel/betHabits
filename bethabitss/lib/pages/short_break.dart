@@ -1,7 +1,4 @@
 import 'dart:async';
-
-import 'package:bethabitss/pages/home.dart';
-import 'package:bethabitss/pages/long_break.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -66,72 +63,11 @@ class _ShortBreakState extends State<ShortBreak> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-          preferredSize: Size.fromHeight(60.0),
-          child: AppBar(
-            automaticallyImplyLeading: false,
-            centerTitle: true,
-            actions: [
-              TextButton(
-                onPressed: () {}, 
-                child: const Icon(Icons.settings)
-              ),
-            ],
-            title: Text(
-              'Pomodoro',
-              style: GoogleFonts.merienda(
-                fontSize: 22.sp,
-              ),
-            ),
-            backgroundColor: const Color(0xffE7BB41),
-          )),
       backgroundColor: const Color(0xff121420),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextButton(
-                  onPressed: () {
-                      print('Click1');
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const HomePage()),
-                      );
-                    },
-                  child: Text(
-                    'POMO',
-                    style: GoogleFonts.changa(color: Colors.white),
-                  ),
-                  style: ButtonStyle(),
-                ),
-                TextButton(
-                    onPressed: () {
-                      print('Click2');
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const ShortBreak()));
-                    },
-                    child: Text('SHORT BREAK')),
-                TextButton(
-                    onPressed: () {
-                      print('Click3');
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LongBreak()),
-                      );
-                    },
-                    child:  const Text('LONG BREAK')),
-              ],
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

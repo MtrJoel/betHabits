@@ -1,5 +1,6 @@
 import 'package:bethabitss/pages/home.dart';
 import 'package:bethabitss/pages/login_pages.dart';
+import 'package:bethabitss/routes/callroutes.dart';
 import 'package:bethabitss/servers/pref_users.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +38,7 @@ void checkAutoLogin(BuildContext context) {
       context,
       MaterialPageRoute(
           builder: (context) =>
-              const HomePage()), // Redirige a la página principal
+              const CallRoutes()), // Redirige a la página principal
     );
   } else {
     // No hay credenciales, redirigir a la página de login
